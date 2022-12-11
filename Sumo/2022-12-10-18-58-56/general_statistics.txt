@@ -1,0 +1,23 @@
+Loading net-file from 'osm.net.xml.gz' ... done (63ms).
+Loading done.
+Simulation version 1.15.0 started with time: 0.00.
+Simulation ended at time: 447.00
+Reason: All vehicles have left the simulation.
+Performance: 
+ Duration: 0.21s
+ Real time factor: 2098.59
+ UPS: 188910.798122
+Vehicles: 
+ Inserted: 300
+ Running: 0
+ Waiting: 0
+Statistics (avg of 300):
+ RouteLength: 930.48
+ Speed: 7.09
+ Duration: 134.13
+ WaitingTime: 8.92
+ TimeLoss: 38.13
+ DepartDelay: 1.05
+
+DijkstraRouter answered 300 queries and explored 204.82 edges on average.
+DijkstraRouter spent 0.01s answering queries (0.04ms on average).

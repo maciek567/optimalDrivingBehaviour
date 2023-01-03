@@ -335,8 +335,8 @@ def draw_fitness_evolution(generation):
 
 fitness_function = fitness_one_simulation_for_generation  # [fitness_many_simulations_for_generation, fitness_one_simulation_for_generation]
 metric = Metric.MIN_FUEL_CONSUMPTION  # [Metric.MAX_AVERAGE_SPEED, Metric.MIN_FUEL_CONSUMPTION]
-population = 10
-generation = 60
+population = 20
+generation = 100
 
 pso(population, generation, metric)
 draw_fitness_evolution(generation)

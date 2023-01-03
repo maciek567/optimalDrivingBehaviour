@@ -1,0 +1,126 @@
+Generation: 0:  Best position: [2.5616596415384403, 2.5610924266317427, 0.20968444910981338, 39.0],  Best fitness: 7.78,  Average fitness: 6.234999999999999
+
+Generation: 1:  Best position: [2.5616596415384403, 2.5610924266317427, 0.20968444910981338, 39.0],  Best fitness: 7.78,  Average fitness: 6.401999999999999
+
+Generation: 2:  Best position: [2.5616596415384403, 2.5610924266317427, 0.20968444910981338, 39.0],  Best fitness: 7.78,  Average fitness: 6.683
+
+Generation: 3:  Best position: [2.5616596415384403, 2.5610924266317427, 0.20968444910981338, 39.0],  Best fitness: 7.78,  Average fitness: 7.233
+
+Generation: 4:  Best position: [2.5616596415384403, 2.5610924266317427, 0.20968444910981338, 39.0],  Best fitness: 7.78,  Average fitness: 7.351000000000001
+
+Generation: 5:  Best position: [2.5616596415384403, 2.5610924266317427, 0.20968444910981338, 39.0],  Best fitness: 7.78,  Average fitness: 7.537000000000001
+
+Generation: 6:  Best position: [2.5616596415384403, 2.5610924266317427, 0.20968444910981338, 39.0],  Best fitness: 7.78,  Average fitness: 7.618999999999998
+
+Generation: 7:  Best position: [2.583049794328004, 2.537250067786121, 0.2, 38.97506777245841],  Best fitness: 7.82,  Average fitness: 7.670999999999999
+
+Generation: 8:  Best position: [2.669079445079574, 2.6137753079125896, 0.2, 39.84568750939559],  Best fitness: 7.85,  Average fitness: 7.728999999999999
+
+Generation: 9:  Best position: [2.787638135744995, 2.6730167914045, 0.2, 40.78523822624068],  Best fitness: 7.86,  Average fitness: 7.7540000000000004
+
+Generation: 10:  Best position: [2.9141894625360996, 2.214548678220039, 0.2, 38.850379347001635],  Best fitness: 8.07,  Average fitness: 7.803999999999999
+
+Generation: 11:  Best position: [2.9652640129404175, 2.1789618306948486, 0.2, 38.91103105176752],  Best fitness: 8.12,  Average fitness: 7.856
+
+Generation: 12:  Best position: [2.946479323394078, 2.681030219798974, 0.2, 41.64220531094052],  Best fitness: 8.06,  Average fitness: 7.884
+
+Generation: 13:  Best position: [2.9870937653524203, 2.666810945426639, 0.2, 41.769717386275325],  Best fitness: 8.11,  Average fitness: 7.8950000000000005
+
+Generation: 14:  Best position: [3.0, 2.6543977608280267, 0.2, 41.8810332585369],  Best fitness: 8.11,  Average fitness: 7.888
+
+Generation: 15:  Best position: [3.0, 2.249167373639147, 0.2, 39.61248031812475],  Best fitness: 8.1,  Average fitness: 7.946
+
+Generation: 16:  Best position: [3.0, 2.7374238495164063, 0.2, 43.05924754597595],  Best fitness: 8.17,  Average fitness: 8.011999999999999
+
+Generation: 17:  Best position: [3.0, 2.7582305949440644, 0.2, 43.55142804792313],  Best fitness: 8.13,  Average fitness: 8.046
+
+Generation: 18:  Best position: [3.0, 2.770737557518675, 0.2, 43.84727840756773],  Best fitness: 8.19,  Average fitness: 8.092
+
+Generation: 19:  Best position: [3.0, 2.7816601823528337, 0.2, 44.10565149105396],  Best fitness: 8.18,  Average fitness: 8.102999999999998
+
+Generation: 20:  Best position: [3.0, 2.787926281296393, 0.2, 44.253875139678605],  Best fitness: 8.18,  Average fitness: 8.094
+
+Generation: 21:  Best position: [3.0, 2.7940048001391973, 0.2, 44.397661608617184],  Best fitness: 8.14,  Average fitness: 8.099
+
+Generation: 22:  Best position: [3.0, 2.6268518024280394, 0.2, 43.094658465435224],  Best fitness: 8.16,  Average fitness: 8.102999999999998
+
+Generation: 23:  Best position: [3.0, 2.753574451570043, 0.2, 43.47890804192022],  Best fitness: 8.19,  Average fitness: 8.113999999999999
+
+Generation: 24:  Best position: [3.0, 2.7446692365391105, 0.2, 43.33817981057126],  Best fitness: 8.17,  Average fitness: 8.114999999999998
+
+Generation: 25:  Best position: [3.0, 2.742098536528485, 0.2, 43.985845673943594],  Best fitness: 8.17,  Average fitness: 8.134000000000002
+
+Generation: 26:  Best position: [3.0, 2.78732342236218, 0.2, 44.48603144738702],  Best fitness: 8.19,  Average fitness: 8.138
+
+Generation: 27:  Best position: [3.0, 2.7803669785284857, 0.2, 44.81278602593458],  Best fitness: 8.17,  Average fitness: 8.134
+
+Generation: 28:  Best position: [3.0, 2.777178477689144, 0.2, 44.43478225375637],  Best fitness: 8.17,  Average fitness: 8.145
+
+Generation: 29:  Best position: [3.0, 2.7874211969271707, 0.2, 44.932745333792546],  Best fitness: 8.19,  Average fitness: 8.145
+
+Generation: 30:  Best position: [3.0, 2.789512254351988, 0.2, 44.62381248734903],  Best fitness: 8.19,  Average fitness: 8.151
+
+Generation: 31:  Best position: [3.0, 2.780878593015391, 0.2, 44.513914336074905],  Best fitness: 8.18,  Average fitness: 8.156
+
+Generation: 32:  Best position: [3.0, 2.77462612993049, 0.2, 44.44779532894954],  Best fitness: 8.18,  Average fitness: 8.158000000000001
+
+Generation: 33:  Best position: [3.0, 2.787366200972396, 0.2, 44.553724324220894],  Best fitness: 8.19,  Average fitness: 8.151
+
+Generation: 34:  Best position: [3.0, 2.788492679771801, 0.2, 44.60319222693165],  Best fitness: 8.2,  Average fitness: 8.147000000000002
+
+Generation: 35:  Best position: [3.0, 2.7916840264039005, 0.2, 44.65758972138435],  Best fitness: 8.2,  Average fitness: 8.142
+
+Generation: 36:  Best position: [3.0, 2.7911204849798077, 0.2, 44.895806024473984],  Best fitness: 8.18,  Average fitness: 8.136
+
+Generation: 37:  Best position: [3.0, 2.7910646913274486, 0.2, 44.8831506660456],  Best fitness: 8.2,  Average fitness: 8.141
+
+Generation: 38:  Best position: [3.0, 2.791036140590352, 0.2, 44.87667466391857],  Best fitness: 8.21,  Average fitness: 8.152
+
+Generation: 39:  Best position: [3.0, 2.791020574624274, 0.2, 44.87314392392091],  Best fitness: 8.2,  Average fitness: 8.152999999999999
+
+Generation: 40:  Best position: [3.0, 2.791005349436732, 0.2, 44.869690480790155],  Best fitness: 8.21,  Average fitness: 8.153
+
+Generation: 41:  Best position: [3.0, 2.7909956612408235, 0.2, 44.867492962137746],  Best fitness: 8.21,  Average fitness: 8.153
+
+Generation: 42:  Best position: [3.0, 2.7921943762480232, 0.2, 44.852566423952176],  Best fitness: 8.22,  Average fitness: 8.148999999999997
+
+Generation: 43:  Best position: [3.0, 2.7923215315968606, 0.2, 44.84011489106998],  Best fitness: 8.21,  Average fitness: 8.145999999999999
+
+Generation: 44:  Best position: [3.0, 2.7912575332214193, 0.2, 44.860744828990676],  Best fitness: 8.19,  Average fitness: 8.136999999999999
+
+Generation: 45:  Best position: [3.0, 2.7911756018942873, 0.2, 44.855052027340854],  Best fitness: 8.19,  Average fitness: 8.135
+
+Generation: 46:  Best position: [3.0, 2.775546874693923, 0.2, 44.79804360584883],  Best fitness: 8.17,  Average fitness: 8.146
+
+Generation: 47:  Best position: [3.0, 2.7893952033292004, 0.2, 44.859186886560515],  Best fitness: 8.19,  Average fitness: 8.151
+
+Generation: 48:  Best position: [3.0, 2.7922184125845697, 0.2, 44.91878762528488],  Best fitness: 8.21,  Average fitness: 8.166
+
+Generation: 49:  Best position: [3.0, 2.792061047565092, 0.2, 44.8998823036753],  Best fitness: 8.23,  Average fitness: 8.173
+
+Generation: 50:  Best position: [3.0, 2.7923498967350606, 0.2, 44.90067881326435],  Best fitness: 8.21,  Average fitness: 8.172
+
+Generation: 51:  Best position: [3.0, 2.7920281967288, 0.2, 44.94438812337129],  Best fitness: 8.23,  Average fitness: 8.178
+
+Generation: 52:  Best position: [3.0, 2.79208061231982, 0.2, 44.91219753231218],  Best fitness: 8.23,  Average fitness: 8.174000000000001
+
+Generation: 53:  Best position: [3.0, 2.792022185170394, 0.2, 44.90369618911461],  Best fitness: 8.22,  Average fitness: 8.165
+
+Generation: 54:  Best position: [3.0, 2.7920621901096836, 0.2, 44.88005495111527],  Best fitness: 8.23,  Average fitness: 8.171
+
+Generation: 55:  Best position: [3.0, 2.791938298849552, 0.2, 44.90411857279765],  Best fitness: 8.21,  Average fitness: 8.173
+
+Generation: 56:  Best position: [3.0, 2.7919089588589476, 0.2, 44.903790622659166],  Best fitness: 8.21,  Average fitness: 8.175
+
+Generation: 57:  Best position: [3.0, 2.7918659470726177, 0.2, 44.910787320632615],  Best fitness: 8.21,  Average fitness: 8.17
+
+Generation: 58:  Best position: [3.0, 2.79191950927586, 0.2, 44.91330161283458],  Best fitness: 8.21,  Average fitness: 8.179
+
+Generation: 59:  Best position: [3.0, 2.7919627271489595, 0.2, 44.915330326269455],  Best fitness: 8.21,  Average fitness: 8.171
+
+
+Number of generations: 60
+ Best position: [3.0, 2.7919627271489595, 0.2, 44.915330326269455]
+ Fitness value: [8.16, 8.13, 8.14, 8.21, 8.19, 8.16, 8.21, 8.19, 8.16, 8.16]
+ Best fitness value: 8.21
+ Average fitness value: 8.171

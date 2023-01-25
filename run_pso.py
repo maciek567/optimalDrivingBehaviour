@@ -1,15 +1,22 @@
 import random
 import os
+import sys
 import numpy as np
+import re
+import matplotlib.pyplot as plt
+import traci
+import statistics as stat
 from subprocess import check_output
 from enum import Enum
-import matplotlib.pyplot as plt
 
 
 statistics_file_name = "general_statistics.txt"
 trips_statistics_file_name = "trips_statistics.xml"
 emissions_file_name = "emissions.xml"
 pso_statistics_file_name="pso_statistics.txt"
+
+
+#****************************************** SIMULATION PREPARATION *********************************************************************************
 
 
 def load_trips(trips_for_one_driver):
@@ -26,6 +33,13 @@ def load_trips(trips_for_one_driver):
 				return trips
 
 	return trips
+
+
+def adjust_trips(trips):
+	trips_starting_instantly = []
+	for trip in trips:
+		trips_starting_instantly.append(re.sub("depart=\"\w+.\w+\"", "depart=\"0.00\"", trip))
+	return trips_starting_instantly
 
 
 def generate_driver(i, driver_characteristics):
@@ -96,9 +110,54 @@ def set_trips_in_simulation(file_name):
 	os.rename(sumo_temp_file_name, sumo_file_name)
 
 
-def run_simulation(options):
-	command = f"sumo.exe --configuration-file=osm.sumocfg {options}"
-	check_output(command, shell=True)
+#****************************************** RUNNING SIMULATION *********************************************************************************
+
+
+def verify_requirements():
+	if 'SUMO_HOME' in os.environ:
+		tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
+		sys.path.append(tools)
+	else:
+		sys.exit("please declare environment variable 'SUMO_HOME'")
+
+
+def get_colliders():
+	collider_types = []
+	if traci.simulation.getCollidingVehiclesNumber() > 0:
+		collisions = list(traci.simulation.getCollisions())
+		for collision in collisions:
+			collider_types.append(collision.colliderType)
+		print(f"Collisions cause by driver type: {collider_types}")
+	return collider_types
+
+
+def run_simulation(options, number_of_finished_trips_to_exit):
+	sumoCmd = ["sumo.exe", "-c", "osm.sumocfg", options]
+	print('Run ' + ' '.join(sumoCmd))
+
+	traci.start(sumoCmd)
+
+	finished_trips = 0
+	vehicles_finished = []
+	collider_types = []
+	while True:
+		traci.simulationStep()
+
+		collider_types += get_colliders()
+
+		finished_trips += traci.simulation.getArrivedNumber()
+		vehicles_finished += traci.simulation.getArrivedIDList()
+		if finished_trips > number_of_finished_trips_to_exit: 
+			print(f"Finished trips: {finished_trips} in {traci.simulation.getTime()} time steps")
+			traci.close()
+			break
+
+	no_duplicates_and_empty_colliders = list(dict.fromkeys(filter(None, collider_types)))
+	print(f"COLLIDER TYPES TO EXCLUDE: {no_duplicates_and_empty_colliders}")
+	return vehicles_finished, no_duplicates_and_empty_colliders
+
+
+#****************************************** METRIC CALCULATION *********************************************************************************
 
 
 def load_average_speed():
@@ -110,10 +169,16 @@ def load_average_speed():
 			return float(avg_speed)
 
 
-class VehicleStatistic:
-	def __init__(self, time_steps_count, searched_characteristic_value_sum):
-	 	self.time_steps_count = time_steps_count
-	 	self.searched_characteristic_value_sum = searched_characteristic_value_sum
+class DriverStatistic:
+	def __init__(self, driver_type, time_steps_count, searched_characteristic_value_sum):
+		self.driver_type = driver_type
+		self.time_steps_count = time_steps_count
+		self.searched_characteristic_value_sum = searched_characteristic_value_sum
+
+class DriverTypeStatistic:
+	def __init__(self, drivers_number, searched_characteristic_value_sum):
+		self.drivers_number = drivers_number
+		self.searched_characteristic_value_sum = searched_characteristic_value_sum
 
 
 class Metric(Enum):
@@ -121,45 +186,105 @@ class Metric(Enum):
 	MIN_FUEL_CONSUMPTION = "Min fuel consumption"
 
 
-def calculate_statistics(drivers_of_different_type, trips_for_one_driver_type, file_name, characteristic_mark, metric):
+def extract_value_float(string):
+	return float(string.split("=")[1].strip("\""))
+
+
+def extract_driver_type(string):
+	driver_type = string.split("=")[1].strip("\"")
+	temp = int(driver_type.split("_")[1])
+	return int(driver_type.split("_")[1])
+
+
+def calculate_drivers_statistics(drivers_of_different_type, trips_for_one_driver_type, file_name, characteristic_mark, metric, finished_vehicles): 
+	# Common
+	VEHICLE_ID = 1
+	# Trips statistics file
+	DURATION = 11
+	ROUTE_LENGTH = 12
+	VEHICLE_TYPE_TRIPS = 20
+	# Emissions file
+	FUEL_CONSUMPTION = 8
+	VEHICLE_TYPE_EMISSIONS = 12
+
+	vehicles_size_including_ids_gaps = int(float(drivers_of_different_type) * float(trips_for_one_driver_type) * 1.1)
+
 	vehicles = {}
-	for i in range(drivers_of_different_type * trips_for_one_driver_type):
-		vehicles[i] = VehicleStatistic(0, 0.0)
+	for i in range(vehicles_size_including_ids_gaps):
+		vehicles[i] = DriverStatistic("", 0, 0.0)
+
+	finished_vehicles = [int(vehicle.strip("veh")) for vehicle in finished_vehicles]
+	print(f"FINISHED VEHICLES: {finished_vehicles}")
 
 	statistic_file = open(file_name, "r")
 	for line in statistic_file:
 		if line.count(characteristic_mark) == 1:
 			parameters = line.strip().split(" ")
-			vehicle_id = int(parameters[1].split("veh")[1].strip("\""))
-			if vehicle_id < drivers_of_different_type * trips_for_one_driver_type:
+			vehicle_id = int(parameters[VEHICLE_ID].split("veh")[1].strip("\""))
+			if vehicle_id in finished_vehicles:
 				vehicles[vehicle_id].time_steps_count += 1
 				if metric == Metric.MAX_AVERAGE_SPEED:
-					vehicles[vehicle_id].searched_characteristic_value_sum += float(parameters[12].split("=")[1].strip("\"")) / float(parameters[11].split("=")[1].strip("\""))
+					vehicles[vehicle_id].driver_type = extract_driver_type(parameters[VEHICLE_TYPE_TRIPS])
+					vehicles[vehicle_id].searched_characteristic_value_sum += extract_value_float(parameters[ROUTE_LENGTH]) / extract_value_float(parameters[DURATION])
 				elif metric == Metric.MIN_FUEL_CONSUMPTION:
-					vehicles[vehicle_id].searched_characteristic_value_sum += float(parameters[8].split("=")[1].strip("\""))
+					vehicles[vehicle_id].driver_type = extract_driver_type(parameters[VEHICLE_TYPE_EMISSIONS])
+					vehicles[vehicle_id].searched_characteristic_value_sum += extract_value_float(parameters[FUEL_CONSUMPTION])
+
+	return vehicles
+
+
+def calculate_drivers_types_statistics(vehicles, drivers_of_different_type):
+	vehicles_types = {}
+	for i in range(drivers_of_different_type):
+		vehicles_types[i] = DriverTypeStatistic(0, 0.0)
+
+	for vehicle in vehicles.values():
+		if vehicle.time_steps_count > 0:
+			vehicles_types[vehicle.driver_type].drivers_number += 1
+			vehicles_types[vehicle.driver_type].searched_characteristic_value_sum += vehicle.searched_characteristic_value_sum / vehicle.time_steps_count
+
+	#for id, vehicle in vehicles.items():
+	#	print(f"{id}: {vehicle.driver_type} {vehicle.time_steps_count} {vehicle.searched_characteristic_value_sum}")
+	print("Driver type: drivers that finished trip | searched characteristic value sum")
+	for id, vehicle in vehicles_types.items():
+		print(f"{id}: {vehicle.drivers_number} | {vehicle.searched_characteristic_value_sum}")
 
 	average_driver_type_statistics = []
-	for i in range(drivers_of_different_type):
-		vehicles_of_same_type_sum = 0
-		vehicles_of_same_type_sucessful_trips = 0
-		for j in range(trips_for_one_driver_type):
-			vehicle = vehicles[i * trips_for_one_driver_type + j]
-			if vehicle.time_steps_count > 0:
-				vehicles_of_same_type_sucessful_trips += 1
-				average_vehicle_statistics = vehicle.searched_characteristic_value_sum / vehicle.time_steps_count
-				vehicles_of_same_type_sum += average_vehicle_statistics
-		average_driver_type_statistics.append(vehicles_of_same_type_sum / vehicles_of_same_type_sucessful_trips)
+	for driver_type in vehicles_types.values():
+		if driver_type.drivers_number != 0:
+			average_driver_type_statistics.append(driver_type.searched_characteristic_value_sum / driver_type.drivers_number)
+		else:
+			average_driver_type_statistics.append(0.0)
 
 	return average_driver_type_statistics
 
 
-def fitness_many_simulations_for_generation(drivers_of_different_types, drivers_characteristics, metric):
+def exclude_colliders(average_driver_type_statistics, colliders_to_exclude):
+	for collider in colliders_to_exclude:
+		id = int(collider.split("_")[1])
+		average_driver_type_statistics[id] = 0.0
+	average_driver_type_statistics = [i for i in average_driver_type_statistics if i != 0.0]
+
+	return average_driver_type_statistics
+
+
+def calculate_statistics(drivers_of_different_type, trips_for_one_driver_type, file_name, characteristic_mark, metric, finished_vehicles, colliders_to_exclude):
+	vehicles = calculate_drivers_statistics(drivers_of_different_type, trips_for_one_driver_type, file_name, characteristic_mark, metric, finished_vehicles)
+	average_driver_type_statistics = calculate_drivers_types_statistics(vehicles, drivers_of_different_type)
+	return exclude_colliders(average_driver_type_statistics, colliders_to_exclude)
+
+
+#****************************************** FITNESS EVALUATION *********************************************************************************
+
+
+def fitness_many_simulations_for_generation(drivers_of_different_types, drivers_characteristics, characteristic_mark, metric, drivers_of_one_type, proportion_of_finished_trips_to_exit_simulation):
 	global statistics_file_name
 	global emissions_file_name
-	trips_for_one_driver_type = 300
+	number_of_finished_trips_to_exit = drivers_of_different_types * drivers_of_one_type * proportion_of_finished_trips_to_exit_simulation
 	results = []
 
-	trips = load_trips(trips_for_one_driver_type)
+	trips = load_trips(drivers_of_one_type)
+	trips = adjust_trips(trips)
 
 	for i in range (0, drivers_of_different_types):
 		driver = generate_driver(i, drivers_characteristics[i])
@@ -167,21 +292,22 @@ def fitness_many_simulations_for_generation(drivers_of_different_types, drivers_
 		set_trips_in_simulation(f"driver_{i}.trips.xml")
 
 		if metric == Metric.MAX_AVERAGE_SPEED:
-			run_simulation(f"--message-log={statistics_file_name}")
+			run_simulation(f"--message-log={statistics_file_name}", number_of_finished_trips_to_exit)
 			results.append(load_average_speed())
 		elif metric == Metric.MIN_FUEL_CONSUMPTION:
-			run_simulation(f"--emission-output={emissions_file_name}")
-			results.append(calculate_statistics(1, trips_for_one_driver_type, emissions_file_name, "fuel=", Metric.MIN_FUEL_CONSUMPTION)[0])
+			run_simulation(f"--emission-output={emissions_file_name}", number_of_finished_trips_to_exit)
+			results.append(calculate_statistics(1, drivers_of_one_type, emissions_file_name, "fuel=", Metric.MIN_FUEL_CONSUMPTION)[0])
 	return results
 
 
-def fitness_one_simulation_for_generation(drivers_of_different_types, drivers_characteristics, metric):
+def fitness_one_simulation_for_generation(drivers_of_different_types, drivers_characteristics, metric, drivers_of_one_type, proportion_of_finished_trips_to_exit_simulation):
 	global trips_statistics_file_name
 	global emissions_file_name
-	trips_for_one_driver_type = 50
+	number_of_finished_trips_to_exit = drivers_of_different_types * drivers_of_one_type * proportion_of_finished_trips_to_exit_simulation
 	drivers = []
 
-	trips = load_trips(drivers_of_different_types * trips_for_one_driver_type)
+	trips = load_trips(drivers_of_different_types * drivers_of_one_type)
+	trips = adjust_trips(trips)
 
 	for i in range (0, drivers_of_different_types):
 		drivers.append(generate_driver(i, drivers_characteristics[i]))
@@ -190,11 +316,14 @@ def fitness_one_simulation_for_generation(drivers_of_different_types, drivers_ch
 	set_trips_in_simulation("trips.xml")
 
 	if metric == Metric.MAX_AVERAGE_SPEED:
-		run_simulation(f"--tripinfo-output={trips_statistics_file_name}")
-		return calculate_statistics(drivers_of_different_types, trips_for_one_driver_type, trips_statistics_file_name, "<tripinfo ", Metric.MAX_AVERAGE_SPEED)
+		finished_vehicles, colliders_to_exclude = run_simulation(f"--tripinfo-output={trips_statistics_file_name}", number_of_finished_trips_to_exit)
+		return calculate_statistics(drivers_of_different_types, drivers_of_one_type, trips_statistics_file_name, "<tripinfo ", Metric.MAX_AVERAGE_SPEED, finished_vehicles, colliders_to_exclude)
 	elif metric == Metric.MIN_FUEL_CONSUMPTION:
-		run_simulation(f"--emission-output={emissions_file_name}")
-		return calculate_statistics(drivers_of_different_types, trips_for_one_driver_type, emissions_file_name, "fuel=", Metric.MIN_FUEL_CONSUMPTION)
+		finished_vehicles, colliders_to_exclude = run_simulation(f"--emission-output={emissions_file_name}", number_of_finished_trips_to_exit)
+		return calculate_statistics(drivers_of_different_types, drivers_of_one_type, emissions_file_name, "fuel=", Metric.MIN_FUEL_CONSUMPTION, finished_vehicles, colliders_to_exclude)
+
+
+#****************************************** PSO OPTIMALIZATION *********************************************************************************
 
 
 class Boundary:
@@ -249,7 +378,7 @@ def get_random_driver_characteristics(boundaries):
 	return driver_characteristics
 
 
-def pso(population, generation, metric):
+def pso(metric, population, drivers_of_one_type, generations, proportion_of_finished_trips_to_exit_simulation):
 	# Initialisation
 	global pso_statistics_file_name
 	dimension = 4
@@ -272,7 +401,7 @@ def pso(population, generation, metric):
 	# Particle's best position
 	pbest_position = particles
 	# Fitness
-	pbest_fitness = fitness_function(population, particles, metric)
+	pbest_fitness = fitness_function(population, particles, metric, drivers_of_one_type, proportion_of_finished_trips_to_exit_simulation)
 	print(f"FITNESS: {pbest_fitness}")
 	# Index of the best particle
 	gbest_index = numpy_optimization_type(pbest_fitness)
@@ -283,8 +412,8 @@ def pso(population, generation, metric):
 	# save statistics
 	pso_statistics = open(pso_statistics_file_name, "w")
 
-	# Loop for the number of generation
-	for t in range(generation):
+	# Loop for the number of generations
+	for t in range(generations):
 		# Stop if the average fitness value reached a predefined success criterion
 		if np.average(pbest_fitness) <= fitness_criterion:
 			break
@@ -295,48 +424,74 @@ def pso(population, generation, metric):
 			    # Move the particles to new position
 			    particles[n] = update_position(particles[n], velocity[n], boundaries)
 		# Calculate the fitness value
-		pbest_fitness = fitness_function(population, particles, metric)
+		pbest_fitness = fitness_function(population, particles, metric, drivers_of_one_type, proportion_of_finished_trips_to_exit_simulation)
 		print(f"FITNESS: {pbest_fitness}")
 		# Find the index of the best particle
 		gbest_index = numpy_optimization_type(pbest_fitness)
 		# Update the position of the best particle
 		gbest_position = pbest_position[gbest_index]
-		statistics = f'Generation: {t}:  Best position: {gbest_position},  Best fitness: {optimization_type(pbest_fitness)},  Average fitness: {np.average(pbest_fitness)}\n\n'
+		statistics = "".join((f"Generation: {t}:\n Best_position={[round(x, 2) for x in gbest_position]} | Best_fitness={round(optimization_type(pbest_fitness), 2)}",
+				f" | Average_fitness={round(np.average(pbest_fitness), 2)} | Fitness_value={[round(x, 2) for x in pbest_fitness]}\n\n"))
 		print(statistics)
 		pso_statistics.write(statistics)
 
-	# Print the results
-	statistics = f'\nNumber of generations: {t+1}\n Best position: {gbest_position}\n Fitness value: {pbest_fitness}\n Best fitness value: {optimization_type(pbest_fitness)}\n Average fitness value: {np.average(pbest_fitness)}'
+	# Print the final results
+	statistics = "".join((f"\nNumber of generations: {t+1}\n Best position: {[round(x, 2) for x in gbest_position]}\n Fitness value: {[round(x, 2) for x in pbest_fitness]}\n",
+			f" Best fitness value: {round(optimization_type(pbest_fitness), 2)}\n Average fitness value: {round(np.average(pbest_fitness), 2)}"))
 	print(statistics)
 	pso_statistics.write(statistics)
 
 
-def draw_fitness_evolution(generation):
+#****************************************** RESULTS PRESENTATION *********************************************************************************
+
+
+def draw_fitness_evolution(generations, drivers_types, drivers_of_one_type):
 	global pso_statistics_file_name
+	BEST_POSITION = 0
+	BEST_FITNESS = 1
+	AVERAGE_FITNESS = 2
+	FITNESS = 3
+
 	statistics_file = open(pso_statistics_file_name, "r")
 	best_fitness = []
 	average_fitness = []
+	std_deviations = []
 	for line in statistics_file:
-		line_parts = line.split("Best fitness:")
+		line_parts = line.split(" | ")
 		if len(line_parts) > 1:
-			best_fitness.append(float(line_parts[1].split(" ")[1].strip(",")))
-			average_fitness.append(float(line_parts[1].split(" ")[5].strip("\n")))
+			best_fitness.append(float(line_parts[BEST_FITNESS].split("=")[1]))
+
+			average_fitness.append(float(line_parts[AVERAGE_FITNESS].split("=")[1]))
+
+			fitness_list=line_parts[FITNESS].split("=")[1]
+			fitness_values = fitness_list.strip("\n").strip("[").strip("]").split(", ")
+			std_deviations.append(stat.stdev([float(x) for x in fitness_values]))
 
 	fig = plt.figure()
-	ax = fig.add_subplot(1, 1, 1)
-	ax.plot(np.arange(generation), best_fitness, label="Best fitness in generation")
-	ax.plot(np.arange(generation), average_fitness, label="Average fitness in generation")
-	ax.set_title(f"Evolution of fitness function: {metric.value}")
+	ax = fig.add_subplot(1, 2, 1)
+	ax.plot(np.arange(generations), best_fitness, label="Best fitness in generation")
+	ax.plot(np.arange(generations), average_fitness, label="Average fitness in generation")
+	ax.set_title(f"Fitness evolution: {metric.value}, {drivers_types} types, {drivers_of_one_type} for every type ")
 	ax.set_xlabel("Generations")
 	ax.set_ylabel("Fitness function value")
-	legend = ax.legend()
+	ax2 = fig.add_subplot(1, 2, 2)
+	ax2.plot(np.arange(generations), std_deviations, "g", label="Fitness std dev in generation")
+	ax2.set_title(f"Evolution of fitness std dev")
+	ax2.set_xlabel("Generations")
+	ax2.set_ylabel("Standard deviation")
 	plt.show()	
 
 
-fitness_function = fitness_one_simulation_for_generation  # [fitness_many_simulations_for_generation, fitness_one_simulation_for_generation]
-metric = Metric.MIN_FUEL_CONSUMPTION  # [Metric.MAX_AVERAGE_SPEED, Metric.MIN_FUEL_CONSUMPTION]
-population = 10
-generation = 60
+#****************************************** PARAMETERS AND OPTIMALIZATION START ************************************************************************
 
-pso(population, generation, metric)
-draw_fitness_evolution(generation)
+
+fitness_function = fitness_one_simulation_for_generation  # [fitness_many_simulations_for_generation, fitness_one_simulation_for_generation]
+metric = Metric.MAX_AVERAGE_SPEED  # [Metric.MAX_AVERAGE_SPEED, Metric.MIN_FUEL_CONSUMPTION]
+drivers_types = 15
+drivers_of_one_type = 100
+generations = 60
+proportion_of_finished_trips_to_exit_simulation = 0.1
+
+pso(metric, drivers_types, drivers_of_one_type, generations, proportion_of_finished_trips_to_exit_simulation)
+draw_fitness_evolution(generations, drivers_types, drivers_of_one_type)
+

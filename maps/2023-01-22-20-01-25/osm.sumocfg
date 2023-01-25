@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2022-12-10 18:58:59 by Eclipse SUMO sumo Version 1.15.0
+<!-- generated on 2023-01-22 20:01:30 by Eclipse SUMO sumo Version 1.15.0
 -->
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
         <net-file value="osm.net.xml.gz"/>
-        <route-files value="osm.passenger.trips.xml"/>
+        <route-files value="trips.xml"/>
     </input>
 
     <processing>

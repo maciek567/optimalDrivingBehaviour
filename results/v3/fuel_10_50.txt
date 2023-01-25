@@ -1,0 +1,186 @@
+Generation: 0:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=652.66 | Average_fitness=734.7 | Fitness_value=[783.85, 716.03, 759.16, 741.34, 665.61, 652.66, 803.01, 750.74, 795.91, 678.67]
+
+Generation: 1:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=649.64 | Average_fitness=730.19 | Fitness_value=[756.04, 720.55, 766.09, 750.45, 666.5, 649.64, 793.19, 750.54, 783.22, 665.67]
+
+Generation: 2:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=649.52 | Average_fitness=724.32 | Fitness_value=[734.33, 717.98, 772.27, 740.46, 663.75, 649.52, 766.84, 749.96, 775.09, 673.02]
+
+Generation: 3:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=648.96 | Average_fitness=726.96 | Fitness_value=[764.17, 709.49, 754.84, 745.9, 662.82, 648.96, 787.1, 757.67, 789.52, 649.11]
+
+Generation: 4:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=653.22 | Average_fitness=727.19 | Fitness_value=[754.07, 712.29, 744.48, 764.06, 663.07, 653.22, 780.48, 757.62, 788.69, 653.91]
+
+Generation: 5:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=651.84 | Average_fitness=726.05 | Fitness_value=[752.33, 710.99, 747.99, 728.5, 677.57, 651.84, 775.98, 747.38, 789.57, 678.34]
+
+Generation: 6:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=645.46 | Average_fitness=719.85 | Fitness_value=[734.44, 695.76, 762.91, 725.11, 678.92, 645.46, 744.35, 744.41, 775.24, 691.88]
+
+Generation: 7:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=651.01 | Average_fitness=721.94 | Fitness_value=[722.24, 699.1, 774.25, 735.53, 673.2, 651.01, 751.81, 750.15, 783.96, 678.2]
+
+Generation: 8:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=661.32 | Average_fitness=711.98 | Fitness_value=[743.95, 685.93, 729.05, 710.92, 672.97, 661.32, 714.55, 747.63, 771.81, 681.65]
+
+Generation: 9:
+ Best_position=[1.2, 1.47, 4.36, 13.0] | Best_fitness=653.84 | Average_fitness=711.36 | Fitness_value=[738.73, 688.71, 738.07, 706.55, 678.67, 653.84, 700.25, 740.59, 772.71, 695.48]
+
+Generation: 10:
+ Best_position=[1.07, 1.33, 4.65, 12.59] | Best_fitness=654.65 | Average_fitness=698.73 | Fitness_value=[716.21, 678.69, 729.77, 699.82, 675.45, 654.82, 654.65, 727.25, 760.15, 690.44]
+
+Generation: 11:
+ Best_position=[1.02, 1.28, 4.74, 12.45] | Best_fitness=653.14 | Average_fitness=690.32 | Fitness_value=[715.45, 697.04, 698.5, 701.42, 671.72, 661.38, 653.14, 724.72, 694.86, 684.97]
+
+Generation: 12:
+ Best_position=[1.2, 1.47, 4.37, 12.99] | Best_fitness=647.44 | Average_fitness=689.54 | Fitness_value=[700.72, 738.56, 688.95, 688.97, 682.89, 647.44, 700.68, 711.59, 655.46, 680.19]
+
+Generation: 13:
+ Best_position=[1.2, 1.47, 4.38, 12.98] | Best_fitness=649.17 | Average_fitness=678.32 | Fitness_value=[691.7, 693.99, 684.38, 682.65, 681.75, 649.17, 668.06, 708.18, 651.24, 672.08]
+
+Generation: 14:
+ Best_position=[1.17, 0.8, 4.66, 10] | Best_fitness=645.59 | Average_fitness=684.7 | Fitness_value=[694.93, 732.5, 678.74, 678.15, 695.69, 647.14, 688.36, 708.19, 645.59, 677.67]
+
+Generation: 15:
+ Best_position=[1.16, 0.7, 4.7, 10] | Best_fitness=646.2 | Average_fitness=678.78 | Fitness_value=[700.8, 689.06, 680.14, 673.29, 680.28, 649.8, 688.57, 712.2, 646.2, 667.47]
+
+Generation: 16:
+ Best_position=[1.16, 0.64, 4.73, 10] | Best_fitness=640.79 | Average_fitness=672.2 | Fitness_value=[678.12, 719.23, 670.75, 671.17, 670.98, 642.32, 669.16, 706.8, 640.79, 652.71]
+
+Generation: 17:
+ Best_position=[1.18, 1.3, 4.46, 12.35] | Best_fitness=644.81 | Average_fitness=669.31 | Fitness_value=[669.84, 729.78, 669.27, 663.71, 669.32, 644.81, 652.38, 694.64, 645.83, 653.51]
+
+Generation: 18:
+ Best_position=[1.18, 1.26, 4.47, 12.2] | Best_fitness=636.9 | Average_fitness=661.28 | Fitness_value=[674.02, 662.98, 663.22, 660.36, 668.68, 636.9, 666.17, 679.13, 650.6, 650.72]
+
+Generation: 19:
+ Best_position=[1.18, 1.23, 4.49, 12.08] | Best_fitness=634.37 | Average_fitness=659.89 | Fitness_value=[670.55, 667.46, 656.36, 655.92, 658.23, 634.37, 669.88, 679.43, 652.84, 653.89]
+
+Generation: 20:
+ Best_position=[1.18, 1.21, 4.5, 11.99] | Best_fitness=634.0 | Average_fitness=658.56 | Fitness_value=[672.64, 659.08, 647.58, 661.01, 662.9, 634.0, 682.18, 668.3, 663.59, 634.29]
+
+Generation: 21:
+ Best_position=[1.19, 1.1, 4.55, 11.3] | Best_fitness=634.89 | Average_fitness=660.8 | Fitness_value=[670.73, 660.97, 663.3, 663.04, 659.92, 637.1, 671.23, 679.83, 667.0, 634.89]
+
+Generation: 22:
+ Best_position=[1.18, 1.18, 4.51, 11.87] | Best_fitness=630.05 | Average_fitness=658.48 | Fitness_value=[664.25, 661.57, 652.55, 660.38, 657.95, 630.05, 678.86, 677.81, 664.85, 636.52]
+
+Generation: 23:
+ Best_position=[1.18, 1.17, 4.51, 11.82] | Best_fitness=628.47 | Average_fitness=657.88 | Fitness_value=[669.05, 661.46, 653.43, 659.37, 659.97, 628.47, 673.46, 674.39, 664.27, 634.91]
+
+Generation: 24:
+ Best_position=[1.18, 1.17, 4.52, 11.79] | Best_fitness=630.09 | Average_fitness=659.81 | Fitness_value=[666.39, 657.51, 671.38, 661.06, 661.47, 630.09, 662.11, 674.5, 667.96, 645.61]
+
+Generation: 25:
+ Best_position=[1.18, 1.16, 4.52, 11.75] | Best_fitness=628.77 | Average_fitness=658.48 | Fitness_value=[660.6, 668.05, 665.13, 664.05, 662.83, 628.77, 658.06, 668.4, 673.42, 635.47]
+
+Generation: 26:
+ Best_position=[1.19, 1.1, 4.54, 11.36] | Best_fitness=629.37 | Average_fitness=664.55 | Fitness_value=[673.76, 672.17, 670.01, 668.82, 661.8, 633.26, 674.05, 684.84, 677.39, 629.37]
+
+Generation: 27:
+ Best_position=[1.18, 1.15, 4.53, 11.7] | Best_fitness=633.11 | Average_fitness=663.3 | Fitness_value=[672.43, 663.55, 681.64, 667.79, 656.0, 633.11, 668.0, 676.7, 674.91, 638.83]
+
+Generation: 28:
+ Best_position=[1.18, 1.15, 4.53, 11.68] | Best_fitness=626.16 | Average_fitness=664.25 | Fitness_value=[667.52, 667.38, 687.52, 669.6, 656.28, 626.16, 678.09, 670.22, 681.06, 638.71]
+
+Generation: 29:
+ Best_position=[1.18, 1.14, 4.53, 11.66] | Best_fitness=628.25 | Average_fitness=665.58 | Fitness_value=[671.86, 665.83, 680.65, 663.24, 656.88, 628.25, 677.35, 682.68, 687.14, 641.92]
+
+Generation: 30:
+ Best_position=[1.18, 1.14, 4.53, 11.65] | Best_fitness=628.06 | Average_fitness=664.63 | Fitness_value=[672.64, 665.99, 675.48, 665.87, 665.25, 628.06, 676.66, 665.87, 694.25, 636.2]
+
+Generation: 31:
+ Best_position=[1.18, 1.14, 4.53, 11.64] | Best_fitness=627.94 | Average_fitness=666.73 | Fitness_value=[674.84, 666.08, 677.54, 666.19, 662.54, 627.94, 680.1, 681.26, 695.18, 635.66]
+
+Generation: 32:
+ Best_position=[1.18, 1.14, 4.53, 11.63] | Best_fitness=626.55 | Average_fitness=667.74 | Fitness_value=[672.88, 666.12, 679.41, 665.52, 661.45, 626.55, 679.66, 691.37, 697.17, 637.31]
+
+Generation: 33:
+ Best_position=[1.18, 1.14, 4.53, 11.63] | Best_fitness=626.49 | Average_fitness=667.71 | Fitness_value=[673.65, 667.62, 677.76, 662.3, 661.56, 626.49, 675.56, 691.39, 701.29, 639.47]
+
+Generation: 34:
+ Best_position=[1.18, 1.14, 4.53, 11.62] | Best_fitness=626.43 | Average_fitness=669.02 | Fitness_value=[674.14, 667.74, 679.68, 663.07, 667.45, 626.43, 676.74, 689.11, 702.26, 643.6]
+
+Generation: 35:
+ Best_position=[1.18, 1.14, 4.53, 11.62] | Best_fitness=626.39 | Average_fitness=668.72 | Fitness_value=[675.64, 667.7, 680.68, 666.81, 666.97, 626.39, 677.34, 688.53, 703.28, 633.89]
+
+Generation: 36:
+ Best_position=[1.18, 1.13, 4.53, 11.62] | Best_fitness=627.72 | Average_fitness=667.73 | Fitness_value=[673.88, 666.07, 680.49, 667.18, 666.65, 627.72, 675.93, 688.5, 694.68, 636.22]
+
+Generation: 37:
+ Best_position=[1.18, 1.13, 4.53, 11.62] | Best_fitness=627.71 | Average_fitness=668.68 | Fitness_value=[676.08, 665.86, 680.74, 663.12, 667.17, 627.71, 672.23, 689.5, 696.39, 648.04]
+
+Generation: 38:
+ Best_position=[1.18, 1.13, 4.53, 11.62] | Best_fitness=627.69 | Average_fitness=667.72 | Fitness_value=[676.01, 666.94, 679.94, 668.93, 667.37, 627.69, 671.4, 689.38, 692.71, 636.87]
+
+Generation: 39:
+ Best_position=[1.18, 1.13, 4.53, 11.62] | Best_fitness=626.44 | Average_fitness=669.78 | Fitness_value=[669.85, 662.61, 681.78, 666.77, 681.28, 626.44, 680.38, 684.09, 700.12, 644.48]
+
+Generation: 40:
+ Best_position=[1.18, 1.13, 4.53, 11.62] | Best_fitness=627.67 | Average_fitness=669.65 | Fitness_value=[672.9, 662.53, 683.46, 666.55, 675.64, 627.67, 680.05, 683.43, 699.21, 645.05]
+
+Generation: 41:
+ Best_position=[1.18, 1.13, 4.53, 11.62] | Best_fitness=626.21 | Average_fitness=671.26 | Fitness_value=[673.37, 662.45, 680.43, 666.28, 674.39, 626.21, 697.12, 683.53, 698.8, 650.01]
+
+Generation: 42:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=629.74 | Average_fitness=670.33 | Fitness_value=[673.04, 672.2, 684.43, 663.96, 674.37, 629.74, 681.19, 677.95, 696.45, 649.93]
+
+Generation: 43:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=629.71 | Average_fitness=669.14 | Fitness_value=[673.38, 666.93, 682.93, 662.43, 674.35, 629.71, 681.04, 678.44, 692.32, 649.89]
+
+Generation: 44:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=665.19 | Fitness_value=[673.93, 657.83, 676.01, 662.17, 662.63, 627.28, 674.57, 679.01, 688.04, 650.43]
+
+Generation: 45:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=664.8 | Fitness_value=[669.65, 657.77, 675.88, 666.47, 659.17, 627.28, 671.05, 678.97, 687.31, 654.44]
+
+Generation: 46:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.27 | Average_fitness=663.79 | Fitness_value=[669.46, 657.69, 675.71, 665.33, 658.68, 627.27, 671.02, 678.94, 687.18, 646.63]
+
+Generation: 47:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.27 | Average_fitness=663.76 | Fitness_value=[669.29, 659.57, 679.73, 665.58, 659.29, 627.27, 667.18, 678.95, 686.33, 644.38]
+
+Generation: 48:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.27 | Average_fitness=663.65 | Fitness_value=[669.85, 659.55, 679.59, 664.92, 659.27, 627.27, 667.2, 678.94, 685.51, 644.34]
+
+Generation: 49:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=663.09 | Fitness_value=[669.7, 659.54, 679.48, 661.94, 659.65, 627.28, 667.2, 678.93, 683.94, 643.22]
+
+Generation: 50:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=662.84 | Fitness_value=[669.54, 658.24, 679.41, 661.82, 661.23, 627.28, 667.22, 675.86, 684.62, 643.2]
+
+Generation: 51:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=662.67 | Fitness_value=[668.19, 658.25, 676.98, 661.25, 662.88, 627.28, 667.25, 676.07, 685.39, 643.18]
+
+Generation: 52:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=662.74 | Fitness_value=[668.75, 658.26, 679.34, 663.64, 658.21, 627.28, 667.16, 676.08, 685.52, 643.16]
+
+Generation: 53:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=663.2 | Fitness_value=[668.64, 658.27, 679.33, 663.61, 663.73, 627.28, 669.79, 674.45, 686.17, 640.71]
+
+Generation: 54:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=662.77 | Fitness_value=[668.58, 658.27, 675.16, 663.6, 663.72, 627.28, 669.8, 674.29, 686.31, 640.7]
+
+Generation: 55:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=662.21 | Fitness_value=[668.54, 658.28, 675.16, 663.59, 655.92, 627.28, 669.81, 676.27, 686.59, 640.7]
+
+Generation: 56:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.28 | Average_fitness=662.01 | Fitness_value=[668.53, 656.89, 675.18, 663.59, 655.92, 627.28, 669.82, 676.22, 685.98, 640.7]
+
+Generation: 57:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.27 | Average_fitness=661.36 | Fitness_value=[668.54, 656.9, 675.22, 663.61, 648.6, 627.27, 669.84, 676.15, 686.77, 640.7]
+
+Generation: 58:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.27 | Average_fitness=662.12 | Fitness_value=[668.56, 656.9, 675.25, 663.63, 655.92, 627.27, 669.85, 676.24, 686.84, 640.7]
+
+Generation: 59:
+ Best_position=[1.18, 1.13, 4.53, 11.61] | Best_fitness=627.27 | Average_fitness=660.99 | Fitness_value=[671.76, 656.96, 675.28, 661.72, 648.61, 627.27, 669.87, 671.02, 686.73, 640.7]
+
+
+Number of generations: 60
+ Best position: [1.18, 1.13, 4.53, 11.61]
+ Fitness value: [671.76, 656.96, 675.28, 661.72, 648.61, 627.27, 669.87, 671.02, 686.73, 640.7]
+ Best fitness value: 627.27
+ Average fitness value: 660.99
